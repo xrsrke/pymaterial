@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "pymaterial"
+  site-url: "https://xrsrke.github.io/pymaterial"
+  description: "material science"
+  repo-branch: master
+  repo-url: "https://github.com/xrsrke/pymaterial"
