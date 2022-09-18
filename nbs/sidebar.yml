@@ -1,0 +1,9 @@
+website:
+  sidebar:
+    contents:
+      - index.ipynb
+      - 00_core.ipynb
+      - 01_x.ipynb
+      - 02_bonding.ipynb
+      - 02_bonding.test.ipynb
+      - 03_material.ipynb
