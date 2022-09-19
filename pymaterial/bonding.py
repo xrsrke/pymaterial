@@ -25,9 +25,14 @@ E_A, A, r = smp.symbols('E_A A r')
 # %% ../nbs/02_bonding.ipynb 16
 class AttractiveForce(BondingForce):
     
+    "Calculate the attractive force between two atoms"
+    
     ELEMENTARY_CHARGE = Q(e, Unit.ELECTRIC_CHARGE)
     
-    def constant_a(self, charge_1: Q, charge_2: Q):
+    def constant_a(self,
+        charge_1: Q, # the charge of the first particle
+        charge_2: Q # the charge of the second particle
+    ) -> Q: # the constant a
         
         # charge_1 = charge_1.to_base_units()
         # charge_2 = charge_2.to_base_units()
