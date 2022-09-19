@@ -3,18 +3,18 @@
 # %% auto 0
 __all__ = ['ureg', 'Q', 'calculate_energy']
 
-# %% ../nbs/00_core.ipynb 4
+# %% ../nbs/00_core.ipynb 5
 import pint
 import sympy as smp
 from scipy.constants import Rydberg, h, c, physical_constants
 
 from .unit import Unit
 
-# %% ../nbs/00_core.ipynb 5
+# %% ../nbs/00_core.ipynb 6
 ureg = pint.UnitRegistry(system='SI')
 Q = ureg.Quantity # quantity
 
-# %% ../nbs/00_core.ipynb 32
+# %% ../nbs/00_core.ipynb 33
 def calculate_energy(**kwargs):
     
     keys = kwargs.keys()

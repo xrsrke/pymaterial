@@ -56,7 +56,7 @@ attractive_force.magnitude(charge_1, charge_2, interatomic_separation)
 attractive_force.constant_a(charge_1, charge_2)
 ```
 
-4.325770410640756×10<sup>-43</sup> coulomb<sup>2</sup> meter<sup>2</sup> newton
+1.68516596104897×10<sup>-5</sup> meter<sup>2</sup> newton
 
 The attractive energy $E_A$ between charge 1 and charge 2
 
@@ -68,4 +68,22 @@ attractive_energy = AttractiveEnergy()
 attractive_energy.magnitude(charge_1, charge_2, interatomic_separation)
 ```
 
--1.4419234702135854e-41 coulomb<sup>2</sup> meter newton
+-0.0005617219870163234 meter newton
+
+### Exercise
+
+``` python
+attractive_force = AttractiveForce()
+```
+
+``` python
+attractive_force.magnitude(Q(-e, 'coulomb'), Q(e, 'coulomb'), Q(0.334e-9, 'meter'))
+```
+
+2.0680891680785755×10<sup>-9</sup> newton
+
+``` python
+attractive_force.constant_a(Q(-e, 'coulomb'), Q(e, 'coulomb'))
+```
+
+    'Please add dimension'
