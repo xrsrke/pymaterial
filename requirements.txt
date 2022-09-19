@@ -1,8 +1,0 @@
-pytest
-numpy
-matplotlib
-scipy
-simpy
-pandas
-mendeleev
-pint
