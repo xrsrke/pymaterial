@@ -53,16 +53,6 @@ attractive_force
 0.018724066233877443 newton
 
 ``` python
-test_eq(attractive_force.units, Unit.FORCE)
-```
-
-``` python
-is_close(attractive_force.magnitude, 0.018, eps=1e-03)
-```
-
-    True
-
-``` python
 AttractiveForce().constant_a(charge_1, charge_2)
 ```
 

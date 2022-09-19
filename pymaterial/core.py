@@ -15,7 +15,7 @@ from fastcore.test import test_eq
 ureg = pint.UnitRegistry(system='SI')
 Q = ureg.Quantity # quantity
 
-# %% ../nbs/00_core.ipynb 32
+# %% ../nbs/00_core.ipynb 31
 def calculate_energy(**kwargs):
     
     keys = kwargs.keys()

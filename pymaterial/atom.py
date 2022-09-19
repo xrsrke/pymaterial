@@ -35,7 +35,7 @@ class Element:
     def __repr__(self):
         return self.unicode
 
-# %% ../nbs/01_atom.ipynb 17
+# %% ../nbs/01_atom.ipynb 16
 def distance(a, b):
     """
     The distance between vector a and vector b
@@ -46,7 +46,7 @@ def distance(a, b):
     """
     return LA.norm(a - b, 2)
 
-# %% ../nbs/01_atom.ipynb 18
+# %% ../nbs/01_atom.ipynb 17
 class Compound:
     def __init__(self, **kwargs):
         keys = kwargs
