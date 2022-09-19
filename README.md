@@ -36,7 +36,7 @@ ureg.ncoulomb
 nanocoulomb
 
 ``` python
-charge_1 = 25 * ureg.ncoulomb
+charge_1 = Q(25, 'ncoulomb')
 ```
 
 ``` python
@@ -46,7 +46,7 @@ charge_1
 25 nanocoulomb
 
 ``` python
-charge_2 = -75 * ureg.ncoulomb
+charge_2 = Q(-75, 'ncoulomb')
 ```
 
 ``` python
@@ -56,7 +56,7 @@ charge_2
 -75 nanocoulomb
 
 ``` python
-interatomic_separation = 3 * ureg.centimeter
+interatomic_separation = Q(3, 'centimeter')
 ```
 
 ``` python
