@@ -23,10 +23,6 @@ How do we know what material to use?
 ### Example 1: Why… $\mathrm{H}_2\mathrm{O}$?
 
 ``` python
-attractive_force = AttractiveForce()
-```
-
-``` python
 charge_1 = Q(25, 'ncoulomb')
 ```
 
@@ -44,16 +40,30 @@ charge_1, charge_2, interatomic_separation
 
     (25 <Unit('nanocoulomb')>, -75 <Unit('nanocoulomb')>, 3 <Unit('centimeter')>)
 
-The attractive Force between charge 1 and charge 2
+##### The attractive force between charge 1 and charge 2
 
 ``` python
-attractive_force.magnitude(charge_1, charge_2, interatomic_separation)
+attractive_force = AttractiveForce().magnitude(charge_1, charge_2, interatomic_separation)
+```
+
+``` python
+attractive_force
 ```
 
 0.018724066233877443 newton
 
 ``` python
-attractive_force.constant_a(charge_1, charge_2)
+test_eq(attractive_force.units, Unit.FORCE)
+```
+
+``` python
+is_close(attractive_force.magnitude, 0.018, eps=1e-03)
+```
+
+    True
+
+``` python
+AttractiveForce().constant_a(charge_1, charge_2)
 ```
 
 1.68516596104897×10<sup>-5</sup> meter<sup>2</sup> newton
@@ -61,29 +71,5 @@ attractive_force.constant_a(charge_1, charge_2)
 The attractive energy $E_A$ between charge 1 and charge 2
 
 ``` python
-attractive_energy = AttractiveEnergy()
+attractive_energy = AttractiveEnergy().magnitude(charge_1, charge_2, interatomic_separation)
 ```
-
-``` python
-attractive_energy.magnitude(charge_1, charge_2, interatomic_separation)
-```
-
--0.0005617219870163234 meter newton
-
-### Exercise
-
-``` python
-attractive_force = AttractiveForce()
-```
-
-``` python
-attractive_force.magnitude(Q(-e, 'coulomb'), Q(e, 'coulomb'), Q(0.334e-9, 'meter'))
-```
-
-2.0680891680785755×10<sup>-9</sup> newton
-
-``` python
-attractive_force.constant_a(Q(-e, 'coulomb'), Q(e, 'coulomb'))
-```
-
-    'Please add dimension'

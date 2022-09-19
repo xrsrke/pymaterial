@@ -13,7 +13,7 @@ from .core import *
 from .unit import Unit
 
 # %% ../nbs/02_bonding.ipynb 6
-class BondingForce(Molecules):
+class BondingForce:
     pass
 
 # %% ../nbs/02_bonding.ipynb 7
@@ -22,7 +22,7 @@ E_A, A, r = smp.symbols('E_A A r')
 # %% ../nbs/02_bonding.ipynb 8
 #pi, epsilon_0, Z_1, Z_2, e = smp.symbols('pi epsilon_0 Z_1 Z_2 e')
 
-# %% ../nbs/02_bonding.ipynb 15
+# %% ../nbs/02_bonding.ipynb 16
 class AttractiveForce(BondingForce):
     
     ELEMENTARY_CHARGE = Q(e, Unit.ELECTRIC_CHARGE)
@@ -45,7 +45,6 @@ class AttractiveForce(BondingForce):
         unit = ureg.newton * ((ureg.meter**2)/(ureg.coulomb**2))
         return 1/(4*pi*epsilon_0) * unit
     
-    @staticmethod
     def magnitude(self,
                   charge_1: Q, # the electric charge of the first atom
                   charge_2: Q, # the electric charge of the second atom
@@ -63,7 +62,7 @@ class AttractiveForce(BondingForce):
         
         return self.coloumb_constant * (charge_magnitude)/(interatomic_distance**2)
 
-# %% ../nbs/02_bonding.ipynb 16
+# %% ../nbs/02_bonding.ipynb 18
 class RepulsiveForce(BondingForce):
     @property
     def constant_b(self):
@@ -73,7 +72,7 @@ class RepulsiveForce(BondingForce):
     def magnitude(self, atom_1, atom_2):
         pass
 
-# %% ../nbs/02_bonding.ipynb 17
+# %% ../nbs/02_bonding.ipynb 19
 class NetForce(BondingForce):
     @property
     def magnitude(self):
@@ -82,11 +81,11 @@ class NetForce(BondingForce):
         """
         pass
 
-# %% ../nbs/02_bonding.ipynb 19
-class BondingEnergy(Molecules):
+# %% ../nbs/02_bonding.ipynb 21
+class BondingEnergy:
     pass
 
-# %% ../nbs/02_bonding.ipynb 20
+# %% ../nbs/02_bonding.ipynb 22
 class AttractiveEnergy(BondingEnergy):
 
     def magnitude(self, charge_1, charge_2, interatomic_separation):
@@ -99,13 +98,13 @@ class AttractiveEnergy(BondingEnergy):
         
         return -1 * constant_a / interatomic_separation.to(Unit.LENGTH)
 
-# %% ../nbs/02_bonding.ipynb 21
+# %% ../nbs/02_bonding.ipynb 23
 class RepulsiveEnergy(BondingEnergy):
     @property
     def magnitude(self):
         pass
 
-# %% ../nbs/02_bonding.ipynb 22
+# %% ../nbs/02_bonding.ipynb 24
 class NetEnergy(BondingEnergy):
     @property
     def magnitude(self):
