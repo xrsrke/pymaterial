@@ -6,7 +6,7 @@ __all__ = ['E_A', 'A', 'r', 'Atom', 'Molecules', 'BondingForce', 'AttractiveForc
 
 # %% ../nbs/02_bonding.ipynb 4
 import scipy
-from scipy.constants import pi, epsilon_0
+from scipy.constants import pi, epsilon_0, e
 import sympy as smp
 
 from .core import *
@@ -31,12 +31,19 @@ E_A, A, r = smp.symbols('E_A A r')
 # %% ../nbs/02_bonding.ipynb 11
 #pi, epsilon_0, Z_1, Z_2, e = smp.symbols('pi epsilon_0 Z_1 Z_2 e')
 
-# %% ../nbs/02_bonding.ipynb 16
+# %% ../nbs/02_bonding.ipynb 17
 class AttractiveForce(BondingForce):
+    
+    ELEMENTARY_CHARGE = Q(e, 'coulomb')
+    
+    def constant_a(self, charge_1, charge_2):
         
-    @property
-    def constant_a(self):
-        pass
+        # charge_1 = charge_1.to_base_units()
+        # charge_2 = charge_2.to_base_units()
+        charge_1 = charge_1.to('coulomb')
+        charge_2 = charge_2.to('coulomb')
+        
+        return self.coloumb_constant * (abs(charge_1) * self.ELEMENTARY_CHARGE) * (abs(charge_2) * self.ELEMENTARY_CHARGE)
 
     @property
     def coloumb_constant(self):
@@ -52,13 +59,12 @@ class AttractiveForce(BondingForce):
         :param interatomic_distance: the interatomic distance between two atoms
         :return the magnitude of the attractive force between two atoms
         """
-        
-        charge_magnitude = abs(charge_1.to('coulomb')) * abs(charge_1.to('coulomb'))
+        charge_magnitude = abs(charge_1.to('coulomb')) * abs(charge_2.to('coulomb'))
         interatomic_distance = interatomic_distance.to('meter')
         
         return self.coloumb_constant * (charge_magnitude)/(interatomic_distance**2)
 
-# %% ../nbs/02_bonding.ipynb 17
+# %% ../nbs/02_bonding.ipynb 20
 class RepulsiveForce(BondingForce):
     @property
     def constant_b(self):
@@ -68,7 +74,7 @@ class RepulsiveForce(BondingForce):
     def magnitude(self, atom_1, atom_2):
         pass
 
-# %% ../nbs/02_bonding.ipynb 18
+# %% ../nbs/02_bonding.ipynb 21
 class NetForce(BondingForce):
     @property
     def magnitude(self):
@@ -77,26 +83,30 @@ class NetForce(BondingForce):
         """
         pass
 
-# %% ../nbs/02_bonding.ipynb 20
+# %% ../nbs/02_bonding.ipynb 23
 class BondingEnergy(Molecules):
     pass
 
-# %% ../nbs/02_bonding.ipynb 21
+# %% ../nbs/02_bonding.ipynb 24
 class AttractiveEnergy(BondingEnergy):
-    @property
-    def magnitude(self):
+
+    def magnitude(self, charge_1, charge_2, interatomic_separation):
         """
         The magnitude of the energy of the attractive force between two atoms in the molecule
         """
-        pass
+        
+        attractive_force = AttractiveForce()
+        constant_a = attractive_force.constant_a(charge_1, charge_2)
+        
+        return -constant_a / interatomic_separation.to('meter')
 
-# %% ../nbs/02_bonding.ipynb 22
+# %% ../nbs/02_bonding.ipynb 25
 class RepulsiveEnergy(BondingEnergy):
     @property
     def magnitude(self):
         pass
 
-# %% ../nbs/02_bonding.ipynb 23
+# %% ../nbs/02_bonding.ipynb 26
 class NetEnergy(BondingEnergy):
     @property
     def magnitude(self):
