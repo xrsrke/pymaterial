@@ -33,4 +33,5 @@ d = { 'settings': { 'branch': 'master',
                                                                                      'pymaterial/bonding.py')},
             'pymaterial.core': {'pymaterial.core.calculate_energy': ('core.html#calculate_energy', 'pymaterial/core.py')},
             'pymaterial.material': {'pymaterial.material.Material': ('material.html#material', 'pymaterial/material.py')},
-            'pymaterial.tests.test_bonding': {}}}
+            'pymaterial.tests.test_bonding': {},
+            'pymaterial.unit': {'pymaterial.unit.Unit': ('unit.html#unit', 'pymaterial/unit.py')}}}
