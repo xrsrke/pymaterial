@@ -9,12 +9,13 @@ import sympy as smp
 from scipy.constants import Rydberg, h, c, physical_constants
 
 from .unit import Unit
+from fastcore.test import test_eq
 
-# %% ../nbs/00_core.ipynb 6
+# %% ../nbs/00_core.ipynb 7
 ureg = pint.UnitRegistry(system='SI')
 Q = ureg.Quantity # quantity
 
-# %% ../nbs/00_core.ipynb 33
+# %% ../nbs/00_core.ipynb 32
 def calculate_energy(**kwargs):
     
     keys = kwargs.keys()

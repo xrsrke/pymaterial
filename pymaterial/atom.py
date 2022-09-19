@@ -6,6 +6,7 @@ __all__ = ['Element', 'distance', 'Compound']
 # %% ../nbs/01_atom.ipynb 3
 import numpy as np
 from numpy import linalg
+from fastcore.test import test_eq
 
 from .core import *
 from .unit import Unit
@@ -34,7 +35,7 @@ class Element:
     def __repr__(self):
         return self.unicode
 
-# %% ../nbs/01_atom.ipynb 14
+# %% ../nbs/01_atom.ipynb 17
 def distance(a, b):
     """
     The distance between vector a and vector b
@@ -45,7 +46,7 @@ def distance(a, b):
     """
     return LA.norm(a - b, 2)
 
-# %% ../nbs/01_atom.ipynb 15
+# %% ../nbs/01_atom.ipynb 18
 class Compound:
     def __init__(self, **kwargs):
         keys = kwargs

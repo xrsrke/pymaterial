@@ -5,6 +5,7 @@ __all__ = ['Unit']
 
 # %% ../nbs/00_unit.ipynb 4
 from dataclasses import dataclass
+from fastcore.test import test_eq, test_fail
 
 # %% ../nbs/00_unit.ipynb 5
 @dataclass
