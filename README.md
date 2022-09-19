@@ -13,6 +13,13 @@ pip install pymaterial
 
 How do we know what material to use?
 
+### Experiments
+
+-   What the world will looks like if electron don’t follow Pauli
+    Exclusion Principle
+-   For hunting life on a new planet, does carbon actually essential?
+-   Why water liquid?
+
 ### Example 1: Why… $\mathrm{H}_2\mathrm{O}$?
 
 ``` python
