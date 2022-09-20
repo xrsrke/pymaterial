@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "atom.html",
+    "href": "atom.html",
+    "title": "atom",
+    "section": "",
+    "text": "Element\n\n Element (formula:str, charge:int=0, coordinate=None)\n\nInitialize self. See help(type(self)) for accurate signature.\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nformula\nstr\n\nthe chemical formula of the element\n\n\ncharge\nint\n0\n\n\n\ncoordinate\nNoneType\nNone\n\n\n\n\n\nfrom chemformula import ChemFormula\n\n\nmuscarine = ChemFormula(\"((CH3)3N)(C6H11O2)\", charge = 1, name = \"L-(+)-Muscarine\")\n\n\nmuscarine.unicode\n\n'((CH₃)₃N)(C₆H₁₁O₂)⁺'\n\n\n\nmuscarine.element\n\n{'C': 9, 'H': 20, 'N': 1, 'O': 2}\n\n\n\nmuscarine.hill_formula\n\n<chemformula.ChemFormulaString>\n\n\n\nwater = Element(formula='H2O', charge=-1)\n\n\nwater.__dict__\n\n{'element': {'H': 2, 'O': 1},\n 'unicode': 'H₂O',\n 'charge': -1,\n 'coordinate': None}\n\n\n\nwater.element['H']\n\n2\n\n\n\nwater\n\nH₂O\n\n\n\nCompound\n\nsource\n\n\n\nCompound\n\n Compound (*args:__main__.Element)\n\nInitialize self. See help(type(self)) for accurate signature.\n\nElement('H2O')\n\nH₂O\n\n\n\nCompound(Element('H2'), Element('O'))\n\n<__main__.Compound>\n\n\n\n\nVector\n\nsource\n\n\ndistance\n\n distance (a, b)\n\n\n\n\n\n\n\n\n\n\nType\nDetails\n\n\n\n\na\n\nthe coordinate of point a\n\n\nb\n\nthe coordinate of point b\n\n\nReturns\nfloat\nthe distance between vector a and vector b"
+  },
+  {
+    "objectID": "02_bonding.test.html",
+    "href": "02_bonding.test.html",
+    "title": "pymaterial",
+    "section": "",
+    "text": "test_attractive_force\n\n test_attractive_force ()"
+  },
+  {
+    "objectID": "material.html",
+    "href": "material.html",
+    "title": "material",
+    "section": "",
+    "text": "source\n\nMaterial\n\n Material ()\n\nInitialize self. See help(type(self)) for accurate signature."
+  },
+  {
+    "objectID": "bonding.html",
+    "href": "bonding.html",
+    "title": "bonding",
+    "section": "",
+    "text": "BondingForce\n\n BondingForce ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\nepsilon_0\n\n8.8541878128e-12\n\n\n\ncoulomb_constant = 1/(4*pi*epsilon_0)\n\n\ncoulomb_constant\n\n8987551792.261171\n\n\n\\[F_A=\\frac{1}{4 \\pi \\epsilon_0} \\frac{\\left|q_1 q_2\\right|}{r^2}\\]\n\ne\n\n1.602176634e-19\n\n\n\nUnit.ELECTRIC_CHARGE\n\n'coulomb'\n\n\n\nAttractive Force\n\nsource\n\n\n\nAttractiveForce\n\n AttractiveForce ()\n\nCalculate the attractive force between two atoms\n\nRepulsive Force\n\nsource\n\n\n\nRepulsiveForce\n\n RepulsiveForce ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\nsource\n\n\nNetForce\n\n NetForce ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\n\nBonding Energy\n\nsource\n\n\nBondingEnergy\n\n BondingEnergy ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\nsource\n\n\nAttractiveEnergy\n\n AttractiveEnergy ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\nsource\n\n\nRepulsiveEnergy\n\n RepulsiveEnergy ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\nsource\n\n\nNetEnergy\n\n NetEnergy ()\n\nInitialize self. See help(type(self)) for accurate signature."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "pymaterial",
+    "section": "",
+    "text": "pip install pymaterial\n\n\nHow do we know what material to use?\n\n\n\n\nWhat the world will looks like if electron don’t follow Pauli Exclusion Principle\nFor hunting life on a new planet, does carbon actually essential?\nWhy water liquid?\n\n\n\n\n\ncharge_1 = Q(25, 'ncoulomb')\n\n\ncharge_2 = Q(-75, 'ncoulomb')\n\n\ninteratomic_separation = Q(3, 'centimeter')\n\n\ncharge_1, charge_2, interatomic_separation\n\n(25 <Unit('nanocoulomb')>, -75 <Unit('nanocoulomb')>, 3 <Unit('centimeter')>)\n\n\n\n\n\nattractive_force = AttractiveForce().magnitude(charge_1, charge_2, interatomic_separation)\n\n\nattractive_force\n\n0.018724066233877443 newton\n\n\n\nAttractiveForce().constant_a(charge_1, charge_2)\n\n1.68516596104897×10-5 meter2 newton\n\n\nThe attractive energy \\(E_A\\) between charge 1 and charge 2\n\nattractive_energy = AttractiveEnergy().magnitude(charge_1, charge_2, interatomic_separation)"
+  },
+  {
+    "objectID": "unit.html",
+    "href": "unit.html",
+    "title": "Unit",
+    "section": "",
+    "text": "source\n\nUnit\n\n Unit ()\n\n\nassert Unit.LENGTH == \"meter\"\n\n\ntest_eq(Unit.LENGTH, \"meter\")\n\n\ndef divide(x, y): return x / y\ntest_fail(lambda: divide(1, 0), contains=\"division by zero\")\n\n\n\nSignificant Figure\n\nimport decimal\n\n\nD = decimal.Decimal\n\n\nD('32.01') + D('5.325') + D('12')\n\nDecimal('49.335')"
+  },
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "Unit\n\nq1 = Q(-75, 'ncoulomb')\n\n\n\nSummary\nKey ideas: - Electron energy levels are discrete - Ionization energy\n\nThe energy emits when electron make transition between energy levels\n\nRydberg\n\n10973731.56816\n\n\n\nlambdaa, nu = smp.symbols('lambda nu')\n\n\nlambdaa\n\nlambda\n\n\n\nnu\n\nnu\n\n\n\nn_i, n_f = smp.symbols('n_i n_f')\n\n\nn_i\n\nn_i\n\n\n\nformula = (Rydberg*h*c) * ((1/n_i**2) - (1/n_f**2))\n\n\nformula\n\n2.17987236110358e-18/n_i**2 - 2.17987236110358e-18/n_f**2\n\n\n\neq = smp.Eq(1/lambdaa, formula)\n\n\neq\n\nEq(1/lambda, 2.17987236110358e-18/n_i**2 - 2.17987236110358e-18/n_f**2)\n\n\n\nformula.subs(1, 2).evalf()\n\n2.17987236110358e-18/n_i**2 - 2.17987236110358e-18/n_f**2\n\n\n\n# #| export\n# def the_wavelength_emit_from_transition(n1: 'the initial energy level', n2: 'the final energy level'):\n#     formula = (Rydberg*h*c) * ((1/n_i**2) - (1/n_f**2))\n#     formula_evaled = formula.subs([(n_i, n1), (n_f, n2)]).evalf()\n#     equation = smp.Eq(1/lambdaa, formula_evaled)\n#     return smp.solve(equation, lambdaa)\n\n\n#energy_emit_from_transition(2, 1)\n\n\n# the_wavelength_emit_from_transition(2, 1)\n\n\n\nThe energy that a photon carries\n\nh\n\n6.62607015e-34\n\n\n\nc\n\n299792458.0\n\n\n\\[\\mathrm{E}=h \\nu\\] \\[E=\\frac{h c}{\\lambda}\\]\n\nsource\n\n\n\ncalculate_energy\n\n calculate_energy (**kwargs)\n\n\nh\n\n6.62607015e-34\n\n\n\nc\n\n299792458.0\n\n\n\nh*c\n\n1.9864458571489286e-25\n\n\n\ncalculate_energy(wavelength=525)\n\n3.783706394569388e-28\n\n\n\ncalculate_energy(wavelength=3.37e-7)\n\n5.894498092430055e-19\n\n\n\ndef calculate_wavelength_from_energy(energy):\n    return energy/h\n\n\ndef calculate_wavelength_from_wavelength(frequency):\n    pass\n\n\ncalculate_energy(wavelength=2)\n\n9.932229285744643e-26\n\n\n\n\nEmission Spectrum\n\n\nUse energy transitions to characterize materials\n\n\nBond\n\nShell: like to be total filled > totally empty > partial filled\n\nOxidation state of an atom tells\n\nfrom mendeleev import Si, Fe, O, Al, Ca, Ti, F, Cr\n\n\n\nSi.name\n\n'Silicon'\n\n\n\nAl.oxistates\n\n[3]\n\n\n\nCa.oxistates\n\n[2]\n\n\n\nTi.oxistates\n\n[4, 3, 2]\n\n\n\nF.oxistates\n\n[-1]\n\n\n\nCr.oxistates\n\n[6, 3, 2]\n\n\n\nCr.ec.conf\n\nOrderedDict([((1, 's'), 2),\n             ((2, 's'), 2),\n             ((2, 'p'), 6),\n             ((3, 's'), 2),\n             ((3, 'p'), 6),\n             ((3, 'd'), 5),\n             ((4, 's'), 1)])\n\n\n\nFe.ec.conf\n\nOrderedDict([((1, 's'), 2),\n             ((2, 's'), 2),\n             ((2, 'p'), 6),\n             ((3, 's'), 2),\n             ((3, 'p'), 6),\n             ((3, 'd'), 6),\n             ((4, 's'), 2)])\n\n\n\nFe.oxistates\n\n[3, 2]\n\n\n\nfrom mendeleev import Na\n\n\nNa.oxistates\n\n[1]\n\n\n\n\nSymbols"
+  }
+]
