@@ -6,6 +6,7 @@ __all__ = ['Element', 'Compound', 'distance']
 # %% ../nbs/01_atom.ipynb 3
 import numpy as np
 from numpy import linalg as LA
+import pandas
 from fastcore.test import *
 
 from .core import *
@@ -13,8 +14,9 @@ from .unit import Unit
 
 # %% ../nbs/01_atom.ipynb 6
 class Element:
-    def __init__(self, *,
+    def __init__(self,
                  formula: str, # the chemical formula of the element
+                 *,
                  charge: int = 0, # the charge of the element
                  coordinate = None # the coordinate of the element, can be 2D or 3D
                 ): # represent an element
@@ -31,13 +33,23 @@ class Element:
 
 # %% ../nbs/01_atom.ipynb 19
 class Compound:
-    def __init__(self, **kwargs):
-        keys = kwargs
+    def __init__(self,
+        *args: Element # list of elements
+    ):
+        keys = args
+        elements = []
+        for element in keys:
+            elements.append(element)
+    
+    def electric_force(self):
+        
+        # TODO: loop through all the bonds
+        pass
 
-# %% ../nbs/01_atom.ipynb 22
+# %% ../nbs/01_atom.ipynb 23
 def distance(
     a, # the coordinate of point a
     b # the coordinate of point b
-) -> int: # the distance between vector a and vector b
+) -> float: # the distance between vector a and vector b
     
     return LA.norm(a - b, 2)

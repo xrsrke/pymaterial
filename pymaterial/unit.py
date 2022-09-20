@@ -3,11 +3,11 @@
 # %% auto 0
 __all__ = ['Unit']
 
-# %% ../nbs/00_unit.ipynb 4
+# %% ../nbs/00_unit.ipynb 3
 from dataclasses import dataclass
 from fastcore.test import test_eq, test_fail
 
-# %% ../nbs/00_unit.ipynb 5
+# %% ../nbs/00_unit.ipynb 4
 @dataclass
 class Unit:
     # SI Unit

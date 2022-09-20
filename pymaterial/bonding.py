@@ -32,7 +32,7 @@ class AttractiveForce(BondingForce):
     def constant_a(self,
         charge_1: Q, # the charge of the first particle
         charge_2: Q # the charge of the second particle
-    ) -> Q: # the constant a
+    ) -> Q: # the magnitude of the constant a
         
         # charge_1 = charge_1.to_base_units()
         # charge_2 = charge_2.to_base_units()
@@ -51,9 +51,10 @@ class AttractiveForce(BondingForce):
         return 1/(4*pi*epsilon_0) * unit
     
     def magnitude(self,
-                  charge_1: Q, # the electric charge of the first atom
-                  charge_2: Q, # the electric charge of the second atom
-                  interatomic_distance):
+                  charge_1: Q, # the electric charge of the first particle
+                  charge_2: Q, # the electric charge of the second particle
+                  interatomic_distance # the interatmomic distance between two particle
+    ) -> Q: # the magnitude of the attractive force between two particle 
         """
         The attractive force between two atoms
         
@@ -93,7 +94,12 @@ class BondingEnergy:
 # %% ../nbs/02_bonding.ipynb 22
 class AttractiveEnergy(BondingEnergy):
 
-    def magnitude(self, charge_1, charge_2, interatomic_separation):
+    def magnitude(
+        self,
+        charge_1, # the charge of the first particle
+        charge_2, # the charge of the second particle
+        interatomic_separation # the interatomic distance between two particles
+    ) -> Q: # the attractive energy between two particle
         """
         The magnitude of the energy of the attractive force between two atoms in the molecule
         """
